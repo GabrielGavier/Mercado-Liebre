@@ -4,12 +4,12 @@ const app = express();
 
 const publicPath= path.join(__dirname,'public');
 
-const port = 3300;
 
 app.use(express.static(publicPath));
-app.listen(port, ()=>{
-    console.log('server started on http://localhost:3300');
-});
+
+const port = process.env.PORT || 3001;
+
+app.listen(port, () =>console.log('servidor corriendo ${port}'));
 
 app.get('/',(req, res)=>{
     res.sendFile(path.join(__dirname,'./views/home.html'));
